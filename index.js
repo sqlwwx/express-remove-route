@@ -1,21 +1,25 @@
 module.exports = function removeRoute(app, path) {
-    var found, route, stack, idx;
-    
+    var found, routes = [], stack, idx;
+
     found = findRoute(app, path);
-    route = found.route;
+    routes = found.routes;
     stack = found.stack;
 
-    if (!route) return false;
+    if (routes.length === 0) return 0;
 
-    idx = stack.indexOf(route);
-    stack.splice(idx, 1);
-    return true;
+    var removeCount = 0;
+    routes.forEach(function (route){
+      idx = stack.indexOf(route);
+      stack.splice(idx, 1);
+      removeCount++;
+    });
+    return removeCount;
 };
 
 module.exports.findRoute = findRoute;
 
 function findRoute(app, path) {
-    var route, stack;
+    var routes = [], stack;
 
     stack = app._router.stack;
 
@@ -28,15 +32,15 @@ function findRoute(app, path) {
                 stack = layer.handle.stack;
                 _findRoute(trimPrefix(path, layer.path));
             } else {
-                route = layer;
+                routes.push(layer);
             }
         });
     }
 
     _findRoute(path, stack);
 
-    if (!route) return null;
-    return {route: route, stack: stack};
+    if (routes.length === 0) return null;
+    return {routes: routes, stack: stack};
 }
 
 function trimPrefix(path, prefix) {
