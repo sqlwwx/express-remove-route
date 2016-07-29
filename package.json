@@ -1,5 +1,5 @@
 {
-  "name": "express-remove-route",
+  "name": "wwx-express-remove-route",
   "version": "0.1.1",
   "description": "Remove a route in express at runtime.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brennancheung/express-remove-route.git"
+    "url": "git+https://github.com/sqlwwx/express-remove-route.git"
   },
   "keywords": [
     "express",
@@ -21,9 +21,9 @@
   "author": "Brennan Cheung <git@brennancheung.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brennancheung/express-remove-route/issues"
+    "url": "https://github.com/sqlwwx/express-remove-route/issues"
   },
-  "homepage": "https://github.com/brennancheung/express-remove-route#readme",
+  "homepage": "https://github.com/sqlwwx/express-remove-route#readme",
   "devDependencies": {
     "express": "^4.13.4",
     "should": "^8.2.2",
